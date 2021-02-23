@@ -1,8 +1,8 @@
 import ApolloClient, { ApolloQueryResult } from 'apollo-client'
 
-import { ProductFilterInput, ProductSortInput, ProductList } from './../../types/GraphQL'
+import { ProductFilterInput, ProductSortInput, ProductList, ProductsSearchParams } from './../../types/GraphQL'
 import { detailQuery, listQuery } from './query'
-import { ProductsQueryType } from './../../types'
+import { Context, ProductsQueryType } from './../../types'
 
 type Variables = {
   pageSize: number
@@ -10,17 +10,17 @@ type Variables = {
   search?: string
   filter?: ProductFilterInput
   sort?: ProductSortInput
-  where?: string
+}
+
+const defaultParams = {
+  pageSize: 20,
+  currentPage: 1,
+  queryType: ProductsQueryType.list
 }
 
 export default async function (
-  context,
-  pageSize = 20,
-  currentPage = 1,
-  filter?: ProductFilterInput,
-  queryType: ProductsQueryType = ProductsQueryType.list,
-  search?: string,
-  sort?: ProductSortInput,
+  context: Context,
+  { pageSize, currentPage, filter, queryType, search, sort }: ProductsSearchParams = defaultParams,
 ): Promise<ApolloQueryResult<ProductList>> {
   const query = queryType === ProductsQueryType.list ? listQuery : detailQuery
 

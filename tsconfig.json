@@ -11,11 +11,11 @@
     "declaration": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "lib": ["es6", "es7", "ES2017", "ES2018", "ES2019", "dom"],
     "strict": false,
     "preserveSymlinks": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "lib", "**/*.spec.ts"]
+  "include": ["./src"],
+  "exclude": ["./node_modules", "./lib", "**/*.spec.ts"]
 }

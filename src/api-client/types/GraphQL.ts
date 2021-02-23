@@ -437,3 +437,19 @@ export enum ProductsQueryType {
   list = 'LIST',
   detail = 'DETAIL',
 }
+
+export interface ProductsSearchParams {
+
+  perPage?: number;
+
+  page?: number;
+
+  sort?: any;
+
+  term?: any;
+
+  filters?: any;
+
+  [x: string]: any;
+
+}

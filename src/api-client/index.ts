@@ -1,10 +1,11 @@
 import * as api from './api'
-import { onSetup } from './helpers'
+import { onSetup, useSFContext } from './helpers'
 import { apiClientFactory } from './helpers'
 export * from './types'
 
-export const { createApiClient } = apiClientFactory<any, any>({
-  tag: 'storefront',
+const { createApiClient } = apiClientFactory<any, any>({
   onSetup,
   api,
 })
+
+export { useSFContext, createApiClient }

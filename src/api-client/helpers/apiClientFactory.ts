@@ -1,5 +1,5 @@
 import merge from 'lodash-es/merge'
-import { applyContextForApi } from './context'
+import { configureContext, applyContextForApi } from './context'
 
 interface BaseConfig {
   [x: string]: any
@@ -7,7 +7,6 @@ interface BaseConfig {
 }
 
 interface FactoryParams<T, F = any> {
-  tag: string
   onSetup: (config: T) => { config: T; client: any }
   api: F
 }
@@ -28,14 +27,15 @@ export function apiClientFactory<ALL_SETTINGS extends BaseConfig, ALL_FUNCTIONS>
 
     const api = applyContextForApi({ ...factoryParams.api, ...customApi }, settings)
 
-    return {
+    const allSettings = {
       api,
       client: settings.client,
       settings: settings.config,
     }
-  }
 
-  createApiClient.tag = factoryParams.tag
+    configureContext({ useSFContext: () => allSettings })
+    return allSettings
+  }
 
   return { createApiClient }
 }

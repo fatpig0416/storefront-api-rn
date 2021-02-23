@@ -1,5 +1,5 @@
 {
-  "name": "@storefront-api/react-native",
+  "name": "@fatpig0416/storefront-api-rn",
   "version": "0.0.1",
   "sideEffects": false,
   "main": "./lib/index.cjs.js",
