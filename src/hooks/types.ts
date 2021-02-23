@@ -7,11 +7,26 @@ type ProductsData = {
   availableSortingOptions: any;
 }
 
-type CategoriesData = [CategoryInterface]
+type CategoriesData = {
+  items: [CategoryInterface];
+  total: number;
+}
 
-export interface UseProducts<PRODUCTS> {
+export interface UseDatum<DATUM> {
 
-  data: PRODUCTS;
+  data: DATUM;
+
+  loading: boolean;
+
+  error?: any;
+
+  [x: string]: any;
+
+}
+
+export interface UseData<DATA> {
+
+  data: DATA;
 
   loading: boolean;
 
@@ -24,4 +39,6 @@ export interface UseProducts<PRODUCTS> {
 export {
   CategoriesData,
   ProductsData,
+  ProductInterface,
+  CategoryInterface,
 };

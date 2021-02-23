@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { handleErrors, useSFContext, ProductsQueryType } from './../api-client'
-import { ProductInterface as Product, UseDatum } from './types'
+import { handleErrors, useSFContext } from './../api-client'
+import { CategoryInterface as Category, UseDatum } from './types'
 
-const useProduct = (id: string | number): UseDatum<Product> => {
-  const [data, setData] = useState<Product>()
+const useCategory = (id: string | number): UseDatum<Category> => {
+  const [data, setData] = useState<Category>()
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<any>()
 
@@ -14,11 +14,11 @@ const useProduct = (id: string | number): UseDatum<Product> => {
   
     const filters = { id: { eq: id } }
     try {
-      const productResponse = await context.api.getProduct({
+      const categoryResponse = await context.api.getCategory({
         filter: filters,
-        queryType: ProductsQueryType.detail,
       });
-      setData((productResponse?.data?.products?.items || [])[0])
+  
+      setData((categoryResponse?.data?.categories?.items || [])[0])
       setLoading(false)
       setError(null)
     } catch (e) {
@@ -39,4 +39,4 @@ const useProduct = (id: string | number): UseDatum<Product> => {
   };
 }
 
-export default useProduct
+export default useCategory

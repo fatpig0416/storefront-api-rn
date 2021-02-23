@@ -9,9 +9,9 @@ export type CategoryList = {
 export type ProductList = {
   items: [ProductInterface]
   aggregations?: JSON
-  page_info: SearchResultPageInfo
-  sort_fields: SortFields
-  total_count: TotalCountInterface
+  page_info?: SearchResultPageInfo
+  sort_fields?: SortFields
+  total_count?: TotalCountInterface
 }
 
 export type CategoryFilterInput = {
@@ -451,5 +451,18 @@ export interface ProductsSearchParams {
   filters?: any;
 
   [x: string]: any;
+}
 
+export interface CategorySearchParams {
+  perPage?: number;
+
+  page?: number;
+
+  search?: string;
+
+  filter?: any;
+
+  sort?: any;
+
+  [x: string]: any;
 }

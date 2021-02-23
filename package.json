@@ -1,6 +1,6 @@
 {
   "name": "@fatpig0416/storefront-api-rn",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "sideEffects": false,
   "main": "./lib/index.cjs.js",
   "module": "./lib/index.es.js",

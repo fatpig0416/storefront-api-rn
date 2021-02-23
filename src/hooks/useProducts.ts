@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-import { useSFContext, ProductsQueryType, ProductsSearchParams } from './../api-client'
-import { ProductsData, UseProducts } from './types'
+import { handleErrors, useSFContext, ProductsQueryType, ProductsSearchParams } from './../api-client'
+import { ProductsData, UseData } from './types'
 
 const availableSortingOptions = [{
   value: 'latest',
@@ -14,9 +14,10 @@ const availableSortingOptions = [{
   label: 'Price from high to low'
 }];
 
-const useProducts = (params: ProductsSearchParams = {}): UseProducts<ProductsData> => {
+const useProducts = (params: ProductsSearchParams = {}): UseData<ProductsData> => {
   const [data, setData] = useState<ProductsData>()
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<any>()
 
   const search = useCallback(async () => {
     setLoading(true)
@@ -24,24 +25,31 @@ const useProducts = (params: ProductsSearchParams = {}): UseProducts<ProductsDat
 
     const { perPage, page, sort, filters, search } = params
   
-    const productResponse = await context.api.getProduct({
-      pageSize: perPage,
-      currentPage: page,
-      filter: filters,
-      queryType: ProductsQueryType.list,
-      search,
-      sort,
-    });
+    try {
+      const productResponse = await context.api.getProduct({
+        pageSize: perPage,
+        currentPage: page,
+        filter: filters,
+        queryType: ProductsQueryType.list,
+        search,
+        sort,
+      });
+    
+      const products = {
+        items: productResponse?.data?.products?.items || [],
+        total: productResponse?.data?.products?.total_count?.value || 0,
+        availableFilters: productResponse?.data?.products?.aggregations,
+        availableSortingOptions
+      };
   
-    const products = {
-      items: productResponse?.data?.products?.items || [],
-      total: productResponse?.data?.products?.total_count?.value || 0,
-      availableFilters: productResponse?.data?.products?.aggregations,
-      availableSortingOptions
-    };
-
-    setData(products)
-    setLoading(false)
+      setData(products)
+      setLoading(false)
+      setError(null)
+    } catch (e) {
+      setData(undefined)
+      setLoading(false)
+      setError(handleErrors(e))
+    }
   }, [])
   
   useEffect(() => {
@@ -51,8 +59,8 @@ const useProducts = (params: ProductsSearchParams = {}): UseProducts<ProductsDat
   return {
     data,
     loading,
+    error,
   };
-
 }
 
 export default useProducts

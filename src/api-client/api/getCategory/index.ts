@@ -1,6 +1,7 @@
 import ApolloClient, { ApolloQueryResult } from 'apollo-client'
-import { CategoryList, CategoryFilterInput, CategorySortInput } from './../../types/GraphQL'
+import { CategoryList, CategoryFilterInput, CategorySortInput, CategorySearchParams } from './../../types/GraphQL'
 import { query } from './query'
+import { Context } from './../../types'
 
 type Variables = {
   pageSize: number
@@ -11,13 +12,10 @@ type Variables = {
 }
 
 export default async function (
-  context,
-  pageSize = 100,
-  currentPage = 1,
-  filter?: CategoryFilterInput,
-  search?: string,
-  sort?: CategorySortInput,
+  context: Context,
+  { pageSize = 250, currentPage = 1, filter, search, sort }: CategorySearchParams
 ): Promise<ApolloQueryResult<CategoryList>> {
+
   const variables: Variables = { pageSize, currentPage }
 
   if (search) variables.search = search

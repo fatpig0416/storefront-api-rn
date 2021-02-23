@@ -57,5 +57,3 @@ export const query = gql`
         }
     }
 `
-//             hits
-// suggest

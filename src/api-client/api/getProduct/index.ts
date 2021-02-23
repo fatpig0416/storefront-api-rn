@@ -12,15 +12,9 @@ type Variables = {
   sort?: ProductSortInput
 }
 
-const defaultParams = {
-  pageSize: 20,
-  currentPage: 1,
-  queryType: ProductsQueryType.list
-}
-
 export default async function (
   context: Context,
-  { pageSize, currentPage, filter, queryType, search, sort }: ProductsSearchParams = defaultParams,
+  { pageSize = 20, currentPage = 1, filter, queryType = ProductsQueryType.list, search, sort }: ProductsSearchParams,
 ): Promise<ApolloQueryResult<ProductList>> {
   const query = queryType === ProductsQueryType.list ? listQuery : detailQuery
 
