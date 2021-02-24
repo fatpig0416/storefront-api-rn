@@ -22,17 +22,11 @@ const useProducts = (params: ProductsSearchParams = {}): UseData<ProductsData> =
   const search = useCallback(async () => {
     setLoading(true)
     const context = useSFContext();
-
-    const { perPage, page, sort, filters, search } = params
   
     try {
       const productResponse = await context.api.getProduct({
-        pageSize: perPage,
-        currentPage: page,
-        filter: filters,
+        ...params,
         queryType: ProductsQueryType.list,
-        search,
-        sort,
       });
     
       const products = {

@@ -11,17 +11,9 @@ const useCategories = (params: CategorySearchParams = {}): UseData<CategoriesDat
   const search = useCallback(async () => {
     setLoading(true)
     const context = useSFContext();
-
-    const { perPage, page, sort, filters, search } = params
   
     try {
-      const categoryResponse = await context.api.getCategory({
-        pageSize: perPage,
-        currentPage: page,
-        filter: filters,
-        search,
-        sort,
-      });
+      const categoryResponse = await context.api.getCategory(params);
     
       const categories = {
         items: categoryResponse?.data?.categories?.items || [],

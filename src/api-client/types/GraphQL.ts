@@ -440,23 +440,23 @@ export enum ProductsQueryType {
 
 export interface ProductsSearchParams {
 
-  perPage?: number;
+  pageSize?: number;
 
-  page?: number;
+  currentPage?: number;
 
   sort?: any;
 
   term?: any;
 
-  filters?: any;
+  filter?: any;
 
   [x: string]: any;
 }
 
 export interface CategorySearchParams {
-  perPage?: number;
+  pageSize?: number;
 
-  page?: number;
+  currentPage?: number;
 
   search?: string;
 
