@@ -20,7 +20,7 @@ export interface ApiClientInstance {
 export function apiClientFactory<ALL_SETTINGS extends BaseConfig, ALL_FUNCTIONS>(
   factoryParams: FactoryParams<ALL_SETTINGS, ALL_FUNCTIONS>,
 ) {
-  const createApiClient = (config: ALL_SETTINGS, customApi: any = {}): ApiClientInstance => {
+  const createSFApiClient = (config: ALL_SETTINGS, customApi: any = {}): ApiClientInstance => {
     const settings = factoryParams.onSetup
       ? (merge(config, factoryParams.onSetup(config)) as ALL_SETTINGS)
       : { config, client: config.client }
@@ -37,5 +37,5 @@ export function apiClientFactory<ALL_SETTINGS extends BaseConfig, ALL_FUNCTIONS>
     return allSettings
   }
 
-  return { createApiClient }
+  return { createSFApiClient }
 }

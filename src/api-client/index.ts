@@ -3,9 +3,9 @@ import { onSetup, useSFContext } from './helpers'
 import { apiClientFactory, handleErrors } from './helpers'
 export * from './types'
 
-const { createApiClient } = apiClientFactory<any, any>({
+const { createSFApiClient } = apiClientFactory<any, any>({
   onSetup,
   api,
 })
 
-export { useSFContext, createApiClient, handleErrors }
+export { useSFContext, createSFApiClient, handleErrors }

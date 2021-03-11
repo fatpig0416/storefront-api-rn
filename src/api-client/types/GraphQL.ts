@@ -260,6 +260,17 @@ export type ProductInterface = {
   is_in_stock: boolean
   keyword: string
   media_gallery: [MediaGalleryInterface]
+  miuz_store_id: string
+  metal: number
+  metal_color: number
+  carat_weight: [string]
+  stone_weight: [string]
+  stone_type: [string]
+  stone_name_mapped: [string]
+  stone_name: [string]
+  main_Stone: number
+  article: string
+  collection_type: [string]
   configurable_options: [ConfigurableOption]
   custom_options: [CustomOption]
   bundle_options: [BundleOption]
@@ -433,9 +444,22 @@ export enum SortEnum {
   DESC = 'DESC',
 }
 
+export enum CategoriesQueryType {
+  list = 'LIST',
+  filtered = 'FILTERED',
+}
+
 export enum ProductsQueryType {
   list = 'LIST',
   detail = 'DETAIL',
+}
+
+export type CategoryProductParams = {
+  productSearch?: String
+  productFilter?: ProductFilterInput
+  productPageSize?: number
+  productCurrentPage?: number
+  productSort?: ProductSortInput
 }
 
 export interface ProductsSearchParams {
@@ -449,6 +473,8 @@ export interface ProductsSearchParams {
   term?: any;
 
   filter?: any;
+
+  productParams?: CategoryProductParams
 
   [x: string]: any;
 }
@@ -466,3 +492,20 @@ export interface CategorySearchParams {
 
   [x: string]: any;
 }
+
+export type AttributeMetaDataOption = {
+  label: string
+  value: string
+}
+
+export interface AttributeMetaData {
+  attribute_code?: string;
+  default_frontend_label?: string;
+  attribute_type?: string;
+  options?: [AttributeMetaDataOption]
+}
+
+export interface CustomQuery {
+  query?: any;
+  variables?: any;
+};

@@ -1,10 +1,15 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { handleErrors, useSFContext, CategorySearchParams } from './../api-client'
+import { handleErrors, useSFContext, CategoriesQueryType, CategorySearchParams, CustomQuery } from './../api-client'
 import { CategoriesData, UseData } from './types'
 
-const useCategories = (params: CategorySearchParams = {}): UseData<CategoriesData> => {
-  const [data, setData] = useState<CategoriesData>()
+const initialData: CategoriesData = {
+  items: [],
+  total: 0,
+}
+
+const useCategories = (params: CategorySearchParams = {}, customQuery?: CustomQuery): UseData<CategoriesData> => {
+  const [data, setData] = useState<CategoriesData>(initialData)
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<any>()
 
@@ -13,7 +18,10 @@ const useCategories = (params: CategorySearchParams = {}): UseData<CategoriesDat
     const context = useSFContext();
   
     try {
-      const categoryResponse = await context.api.getCategory(params);
+      const categoryResponse = await context.api.getCategory(
+        {...params, queryType: CategoriesQueryType.list }, 
+        customQuery
+        );
     
       const categories = {
         items: categoryResponse?.data?.categories?.items || [],
@@ -23,7 +31,7 @@ const useCategories = (params: CategorySearchParams = {}): UseData<CategoriesDat
       setData(categories)
       setLoading(false)
     } catch (e) {
-      setData(undefined)
+      setData(initialData)
       setLoading(false)
       setError(handleErrors(e))
     }

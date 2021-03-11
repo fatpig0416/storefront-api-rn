@@ -1,14 +1,15 @@
-import { ProductInterface, CategoryInterface } from './../api-client'
+import { ProductInterface, CategoryInterface, SearchResultPageInfo, AttributeMetaData } from './../api-client'
 
 type ProductsData = {
-  items: [ProductInterface];
+  items: [ProductInterface?];
   total: number;
-  availableFilters: JSON;
-  availableSortingOptions: any;
+  pageInfo?: SearchResultPageInfo;
+  availableFilters?: [AttributeMetaData];
+  availableSortingOptions?: any;
 }
 
 type CategoriesData = {
-  items: [CategoryInterface];
+  items: [CategoryInterface?];
   total: number;
 }
 

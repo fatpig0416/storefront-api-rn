@@ -2,7 +2,7 @@ import ApolloClient, { ApolloQueryResult } from 'apollo-client'
 
 import { ProductFilterInput, ProductSortInput, ProductList, ProductsSearchParams } from './../../types/GraphQL'
 import { detailQuery, listQuery } from './query'
-import { Context, ProductsQueryType } from './../../types'
+import { Context, ProductsQueryType, CustomQuery } from './../../types'
 
 type Variables = {
   pageSize: number
@@ -15,17 +15,27 @@ type Variables = {
 export default async function (
   context: Context,
   { pageSize = 20, currentPage = 1, filter, queryType = ProductsQueryType.list, search, sort }: ProductsSearchParams,
+  customQuery?: CustomQuery
 ): Promise<ApolloQueryResult<ProductList>> {
-  const query = queryType === ProductsQueryType.list ? listQuery : detailQuery
+  if (customQuery) {
+    const { query, variables } = customQuery
+    return await (context.client as ApolloClient<any>).query<ProductList>({
+      query,
+      variables,
+      fetchPolicy: 'no-cache',
+    })
+  } else {
+    const query = queryType === ProductsQueryType.list ? listQuery : detailQuery
 
-  const variables: Variables = { pageSize, currentPage }
-  if (search) variables.search = search
-  if (filter) variables.filter = filter
-  if (sort) variables.sort = sort
+    const variables: Variables = { pageSize, currentPage }
+    if (search) variables.search = search
+    if (filter) variables.filter = filter
+    if (sort) variables.sort = sort
 
-  return await (context.client as ApolloClient<any>).query<ProductList>({
-    query,
-    variables,
-    fetchPolicy: 'no-cache',
-  })
+    return await (context.client as ApolloClient<any>).query<ProductList>({
+      query,
+      variables,
+      fetchPolicy: 'no-cache',
+    })
+  }
 }

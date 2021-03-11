@@ -1,6 +1,5 @@
 import gql from 'graphql-tag'
-// categoryProductFragment
-import { categoryFragment } from './../../fragments'
+import { categoryFragment, categoryProductFragment } from './../../fragments'
 
 const categoriesField = `
     id
@@ -36,14 +35,19 @@ const categoriesField = `
 `
 
 export const filteredQuery = gql`
-    query categories($filter: CategoryFilterInput) {
+    query categories($filter: CategoryFilterInput, $productSearch: String, $productFilter: ProductFilterInput, $productPageSize: Int, $productCurrentPage: Int, $productSort: ProductSortInput) {
         categories(filter: $filter) {
-            ${categoriesField}  
+            items {
+                ${categoriesField}
+                products(search: $productSearch, filter: $productFilter, pageSize: $productPageSize, currentPage: $productCurrentPage, sort: $productSort) {
+                    ${categoryProductFragment}
+                }
+            }
         }
     }
 `
 
-export const query = gql`
+export const listQuery = gql`
     query categories($search: String, $filter: CategoryFilterInput, $pageSize: Int, $currentPage: Int, $sort: CategorySortInput) {
         categories(search: $search, filter: $filter, pageSize: $pageSize, currentPage: $currentPage, sort: $sort) {
             items {

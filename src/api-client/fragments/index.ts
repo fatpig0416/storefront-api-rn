@@ -92,6 +92,17 @@ export const productFragment = `
     label
     video
   }
+  miuz_store_id
+  metal
+  metal_color
+  carat_weight
+  collection_type
+  stone_weight
+  stone_type
+  stone_name_mapped
+  stone_name
+  main_Stone
+  article
   reviews {
     page_info {
       page_size
@@ -108,6 +119,9 @@ export const productFragment = `
       created_at
     }
   }
+  configurable_children {
+    id
+  }
   configurable_options {
     id
     attribute_id
@@ -119,6 +133,21 @@ export const productFragment = `
       label
     }
     product_id
+  }
+  custom_options {
+    image_size_x
+    image_size_y
+    title
+    type
+    is_require
+    max_characters
+    values {
+      price
+      price_type
+      option_type_id
+      title
+      sort_order
+    }
   }
 `
 
@@ -164,83 +193,4 @@ export const categoryFragment = `
     slug
     path
   }
-`
-
-export const cartFragment = `
-  id
-  prices {
-      subtotal_excluding_tax {
-        value
-      },
-      subtotal_including_tax {
-        value
-      },
-      applied_taxes {
-        amount {
-          value
-        },
-        label
-      }
-      discounts {
-        amount {
-          value
-        },
-        label
-      }
-      grand_total {
-        value
-      }
-  }
-  shipping_addresses {
-    selected_shipping_method {
-      amount {
-        currency
-        value
-      },
-      carrier_code
-      method_code,
-      carrier_title
-      method_title
-    }
-  }
-  items {
-    id
-    product {
-        ${productFragment}
-    }
-    prices {
-      row_total {
-        value
-      }
-      row_total_including_tax {
-        value
-      }
-      total_item_discount {
-        value
-      }
-    }
-    ... on ConfigurableCartItem {
-      configurable_options {
-         id
-         value_id,
-         option_label
-         value_label
-      }
-    }
-    quantity
-  }
-  total_quantity
-`
-
-export const customerFragment = `
-  email
-  firstname
-  is_subscribed
-  lastname
-  middlename
-  prefix
-  suffix
-  taxvat
-  default_billing
-  default_shipping
 `

@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { handleErrors, useSFContext } from './../api-client'
+import { handleErrors, useSFContext, CategoriesQueryType, CategoryProductParams } from './../api-client'
 import { CategoryInterface as Category, UseDatum } from './types'
 
-const useCategory = (id: string | number): UseDatum<Category> => {
+const useCategory = (id: string | number, productParams?: CategoryProductParams): UseDatum<Category> => {
   const [data, setData] = useState<Category>()
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<any>()
 
-  const search = useCallback(async () => {
+  const search = useCallback(async (params, callback = undefined) => {
     setLoading(true)
     const context = useSFContext();
   
@@ -16,6 +16,8 @@ const useCategory = (id: string | number): UseDatum<Category> => {
     try {
       const categoryResponse = await context.api.getCategory({
         filter: filters,
+        queryType: CategoriesQueryType.filtered,
+        productParams: params,
       });
   
       setData((categoryResponse?.data?.categories?.items || [])[0])
@@ -26,15 +28,19 @@ const useCategory = (id: string | number): UseDatum<Category> => {
       setLoading(false)
       setError(handleErrors(e))
     }
+    if (callback) callback()
   }, [])
   
   useEffect(() => {
-    if (Boolean(id)) search()
+    if (Boolean(id)) {
+      search(productParams)
+    }
   }, [search])
   
   return {
     data,
     loading,
+    reload: search,
     error,
   };
 }

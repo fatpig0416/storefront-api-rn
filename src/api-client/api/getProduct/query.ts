@@ -16,6 +16,15 @@ export const listQuery = gql`
             items {
                 ${productFragment}
             }
+            attribute_metadata {
+                attribute_code
+                default_frontend_label
+                attribute_type
+                options {
+                  label
+                  value
+                }
+              }
             aggregations
             page_info {
                 page_size
