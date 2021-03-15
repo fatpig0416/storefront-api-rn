@@ -1,4 +1,4 @@
-import { ProductInterface, CategoryInterface, SearchResultPageInfo, AttributeMetaData } from './../api-client'
+import { ProductInterface, CategoryInterface, SearchResultPageInfo, AttributeMetaData, Geo, LocationInterface } from './../api-client'
 
 type ProductsData = {
   items: [ProductInterface?];
@@ -6,6 +6,12 @@ type ProductsData = {
   pageInfo?: SearchResultPageInfo;
   availableFilters?: [AttributeMetaData];
   availableSortingOptions?: any;
+}
+
+type LocationsData = {
+  items: [LocationInterface?];
+  total: number;
+  pageInfo?: SearchResultPageInfo;
 }
 
 type CategoriesData = {
@@ -42,4 +48,6 @@ export {
   ProductsData,
   ProductInterface,
   CategoryInterface,
+  Geo,
+  LocationsData,
 };

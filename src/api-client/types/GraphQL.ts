@@ -14,6 +14,12 @@ export type ProductList = {
   total_count?: TotalCountInterface
 }
 
+export type LocationList = {
+  items: [LocationInterface]
+  page_info?: SearchResultPageInfo
+  total_count?: TotalCountInterface
+}
+
 export type CategoryFilterInput = {
   id: FilterTypeInput
   parent_id: FilterTypeInput
@@ -347,6 +353,20 @@ export type SortField = {
   value: string
 }
 
+export type LocationInterface = {
+  id: string
+  name: string
+  name_converted: string
+  status: string
+  city: string
+  zip: string
+  address: string
+  country: string
+  position: number
+  miuz_id: string
+  products: [ProductInterface]
+}
+
 type CategoryBindingFilterInput = {
   category_id: FilterTypeInput
   name: FilterTypeInput
@@ -439,6 +459,15 @@ export type ProductSortInput = {
   gift_message_available: SortEnum
 }
 
+export type LocationFilterInput = {
+  city: FilterTypeInput
+  country: FilterTypeInput
+  service: FilterTypeInput
+  type: FilterTypeInput
+  id: FilterTypeInput
+  miuz_id: FilterTypeInput
+}
+
 export enum SortEnum {
   ASC = 'ASC',
   DESC = 'DESC',
@@ -479,6 +508,17 @@ export interface ProductsSearchParams {
   [x: string]: any;
 }
 
+export interface LocationsSearchParams {
+
+  pageSize?: number;
+
+  currentPage?: number;
+
+  filter?: any;
+
+  [x: string]: any;
+}
+
 export interface CategorySearchParams {
   pageSize?: number;
 
@@ -509,3 +549,12 @@ export interface CustomQuery {
   query?: any;
   variables?: any;
 };
+
+export type Geo = {
+  country: string
+  city: string
+  region: string
+  district: string
+  lat: string
+  lng: string
+}

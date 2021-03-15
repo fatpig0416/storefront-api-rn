@@ -92,6 +92,7 @@ export const productFragment = `
     label
     video
   }
+  miuz_id
   miuz_store_id
   metal
   metal_color
@@ -121,6 +122,18 @@ export const productFragment = `
   }
   configurable_children {
     id
+    sku
+    configurable_options {
+      id
+      attribute_id
+      attribute_code
+      label
+      values {
+        value_index
+        label
+      }
+      product_id
+    }
   }
   configurable_options {
     id
