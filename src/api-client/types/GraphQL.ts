@@ -274,7 +274,7 @@ export type ProductInterface = {
   stone_type: [string]
   stone_name_mapped: [string]
   stone_name: [string]
-  main_Stone: number
+  main_stone: number
   article: string
   collection_type: [string]
   configurable_options: [ConfigurableOption]
@@ -557,4 +557,11 @@ export type Geo = {
   district: string
   lat: string
   lng: string
+}
+
+export type Distance = {
+  from: string
+  to: string
+  distance: string
+  locations: [LocationInterface]
 }

@@ -2,7 +2,6 @@ export const productFragment = `
   id
   type_id
   visibility
-  status
   name
   sku
   description
@@ -40,15 +39,6 @@ export const productFragment = `
       website_id
   }
   news_from_date
-  required_options
-  has_options
-  image_label
-  small_image_label
-  thumbnail_label
-  country_of_manufacture
-  gift_message_available
-  created_at
-  updated_at
   size
   size_options
   color
@@ -58,14 +48,6 @@ export const productFragment = `
       id
       name
       url_path
-      breadcrumbs {
-          category_id
-          name
-      }
-  }
-  breadcrumbs {
-      category_id
-      name
   }
   category {
       category_id
@@ -102,38 +84,17 @@ export const productFragment = `
   stone_type
   stone_name_mapped
   stone_name
-  main_Stone
+  main_stone
   article
-  reviews {
-    page_info {
-      page_size
-      current_page
-    }
-    items {
-      id
-      title
-      detail
-      nickname
-      review_entity
-      review_type
-      review_status
-      created_at
-    }
-  }
   configurable_children {
     id
     sku
-    configurable_options {
-      id
-      attribute_id
-      attribute_code
-      label
-      values {
-        value_index
-        label
-      }
-      product_id
-    }
+    metal_color
+    size
+    carat_weight
+    miuz_weight
+    miuz_store_id
+    miuz_id
   }
   configurable_options {
     id
@@ -205,5 +166,21 @@ export const categoryFragment = `
     name
     slug
     path
+  }
+`
+
+export const locationFragment = `
+  id
+  name
+  name_converted
+  status
+  city
+  zip
+  address
+  country
+  position
+  miuz_id
+  products {
+    ${productFragment}
   }
 `

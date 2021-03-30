@@ -1,4 +1,12 @@
-import { ProductInterface, CategoryInterface, SearchResultPageInfo, AttributeMetaData, Geo, LocationInterface } from './../api-client'
+import { 
+  ProductInterface,
+  CategoryInterface,
+  SearchResultPageInfo,
+  AttributeMetaData,
+  Geo,
+  Distance,
+  LocationInterface
+} from './../api-client'
 
 type ProductsData = {
   items: [ProductInterface?];
@@ -49,5 +57,6 @@ export {
   ProductInterface,
   CategoryInterface,
   Geo,
+  Distance,
   LocationsData,
 };

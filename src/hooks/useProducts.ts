@@ -31,7 +31,7 @@ const useProducts = (params: ProductsSearchParams = {}, customQuery?: CustomQuer
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<any>()
 
-  const search = useCallback(async (_params, callback = undefined) => {
+  const search = useCallback(async (_params: ProductsSearchParams, _customQuery: CustomQuery, callback = undefined) => {
     if (!Boolean(_params)) {
       setData(initialData)
       return
@@ -43,7 +43,7 @@ const useProducts = (params: ProductsSearchParams = {}, customQuery?: CustomQuer
     try {
       const productResponse = await context.api.getProduct(
         { ..._params, queryType: ProductsQueryType.list },
-        customQuery
+        _customQuery
         );
     
       const products = {
@@ -66,7 +66,7 @@ const useProducts = (params: ProductsSearchParams = {}, customQuery?: CustomQuer
   }, [])
   
   useEffect(() => {
-    search(params)
+    search(params, customQuery)
   }, [search])
   
   return {

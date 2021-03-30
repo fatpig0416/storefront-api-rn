@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import { locationFragment } from './../../fragments'
 
 import { productFragment } from './../../fragments'
 
@@ -6,19 +7,7 @@ export const locationsQuery = gql`
   query locations($filter: LocationFilterInput, $pageSize: Int, $currentPage: Int) {
     locations(pageSize: $pageSize, currentPage: $currentPage, filter: $filter) {
       items {
-        id
-        name
-        name_converted
-        status
-        city
-        zip
-        address
-        country
-        position
-        miuz_id
-        products {
-          ${productFragment}
-        }
+        ${locationFragment}
       }
       total_count
       page_info {
