@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
 import { locationFragment } from './../../fragments'
 
-import { productFragment } from './../../fragments'
 
 export const locationsQuery = gql`
   query locations($filter: LocationFilterInput, $pageSize: Int, $currentPage: Int) {

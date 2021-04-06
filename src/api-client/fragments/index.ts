@@ -89,12 +89,49 @@ export const productFragment = `
   configurable_children {
     id
     sku
-    metal_color
+    name
+    type_id
+    description
+    short_description
+    price
+    price_incl_tax
+    price_tax
+    final_price
+    final_price_incl_tax
+    final_price_tax
+    original_price
+    original_price_incl_tax
+    original_price_tax
+    min_price
+    max_price
+    special_price
+    special_price_incl_tax
+    special_price_tax
+    special_from_date
+    special_to_date
+    weight
+    manufacturer
+    color
+    color_options
+    image
+    small_image
+    thumbnail
     size
+    size_options
     carat_weight
     miuz_weight
     miuz_store_id
     miuz_id
+    metal
+    metal_color
+    collection_type
+    stone_weight
+    stone_type
+    stone_name_mapped
+    stone_name
+    main_stone
+    article
+    
   }
   configurable_options {
     id
@@ -172,8 +209,8 @@ export const categoryFragment = `
 export const locationFragment = `
   id
   name
-  name_converted
-  status
+  city_name_converted
+  active
   city
   zip
   address
