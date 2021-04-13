@@ -12,7 +12,7 @@ type Variables = {
 
 export default async function (
   context: Context,
-  { pageSize = 200, currentPage = 1, filter }: LocationsSearchParams
+  { pageSize = 100, currentPage = 1, filter }: LocationsSearchParams
 ): Promise<ApolloQueryResult<LocationList>> {
 
     const variables: Variables = { pageSize, currentPage }

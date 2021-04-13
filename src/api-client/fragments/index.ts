@@ -1,3 +1,64 @@
+export const productChildrenFragment = `
+  id
+  type_id
+  name
+  sku
+  description
+  short_description
+  price
+  price_incl_tax
+  price_tax
+  final_price
+  final_price_incl_tax
+  final_price_tax
+  original_price
+  original_price_incl_tax
+  original_price_tax
+  min_price
+  max_price
+  special_price
+  special_price_incl_tax
+  special_price_tax
+  special_from_date
+  special_to_date
+  weight
+  image
+  small_image
+  thumbnail
+  size
+  size_options
+  color
+  color_options
+  is_in_stock
+  media_gallery {
+    image
+    url
+  }
+  miuz_id
+  miuz_store_id
+  miuz_sku
+  metal
+  metal_color
+  carat_weight
+  collection_type
+  stone_weight
+  stone_type
+  stone_name_mapped
+  stone_name
+  main_stone
+  article
+  configurable_options {
+    id
+    attribute_id
+    attribute_code
+    label
+    values {
+      value_index
+      label
+    }
+  }
+`
+
 export const productFragment = `
   id
   type_id
@@ -76,6 +137,7 @@ export const productFragment = `
   }
   miuz_id
   miuz_store_id
+  miuz_sku
   metal
   metal_color
   carat_weight
@@ -86,53 +148,6 @@ export const productFragment = `
   stone_name
   main_stone
   article
-  configurable_children {
-    id
-    sku
-    name
-    type_id
-    description
-    short_description
-    price
-    price_incl_tax
-    price_tax
-    final_price
-    final_price_incl_tax
-    final_price_tax
-    original_price
-    original_price_incl_tax
-    original_price_tax
-    min_price
-    max_price
-    special_price
-    special_price_incl_tax
-    special_price_tax
-    special_from_date
-    special_to_date
-    weight
-    manufacturer
-    color
-    color_options
-    image
-    small_image
-    thumbnail
-    size
-    size_options
-    carat_weight
-    miuz_weight
-    miuz_store_id
-    miuz_id
-    metal
-    metal_color
-    collection_type
-    stone_weight
-    stone_type
-    stone_name_mapped
-    stone_name
-    main_stone
-    article
-    
-  }
   configurable_options {
     id
     attribute_id
@@ -176,7 +191,7 @@ export const categoryProductFragment = `
   }
 `
 
-export const categoryFragment = `
+const categoryChildren = `
   id
   parent_id
   description
@@ -203,6 +218,13 @@ export const categoryFragment = `
     name
     slug
     path
+  }
+`
+
+export const categoryFragment = `
+  ${categoryChildren}
+  children {
+    ${categoryChildren}
   }
 `
 

@@ -491,6 +491,13 @@ export type CategoryProductParams = {
   productSort?: ProductSortInput
 }
 
+export interface ProductDetailParams {
+
+  id?: number | string;
+
+  sku?: number | string;
+}
+
 export interface ProductsSearchParams {
 
   pageSize?: number;

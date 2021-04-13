@@ -25,6 +25,7 @@ const useLocations = (params: LocationsSearchParams = {}): UseData<LocationsData
   
     setLoading(true)
     const context = useSFContext();
+    console.log({ _params })
   
     try {
       const locationResponse = await context.api.getLocation({ ..._params });

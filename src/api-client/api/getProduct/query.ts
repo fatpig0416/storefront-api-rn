@@ -1,10 +1,13 @@
 import gql from 'graphql-tag'
-import { productFragment } from './../../fragments'
+import { productFragment, productChildrenFragment } from './../../fragments'
 export const detailQuery = gql`
     query products($search: String, $filter: ProductFilterInput, $pageSize: Int, $currentPage: Int, $sort: ProductSortInput) {
         products(search: $search, filter: $filter, pageSize: $pageSize, currentPage: $currentPage, sort: $sort) {
             items {
                 ${productFragment}
+                configurable_children {
+                    ${productChildrenFragment}
+                }
             }
         }
     }
