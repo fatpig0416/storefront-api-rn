@@ -93,11 +93,11 @@ export const productFragment = `
   thumbnail
   tier_price
   tier_prices {
-      customer_group_id
-      qty
-      value
-      percentage_value
-      website_id
+    customer_group_id
+    qty
+    value
+    percentage_value
+    website_id
   }
   news_from_date
   size
@@ -105,11 +105,6 @@ export const productFragment = `
   color
   color_options
   category_ids
-  categories {
-      id
-      name
-      url_path
-  }
   category {
       category_id
       name
@@ -160,21 +155,6 @@ export const productFragment = `
     }
     product_id
   }
-  custom_options {
-    image_size_x
-    image_size_y
-    title
-    type
-    is_require
-    max_characters
-    values {
-      price
-      price_type
-      option_type_id
-      title
-      sort_order
-    }
-  }
 `
 
 export const categoryProductFragment = `
@@ -203,22 +183,11 @@ const categoryChildren = `
   url_path
   position
   level
-  created_at
-  updated_at
   product_count
-  default_sort_by
   children_count
   available_sort_by
   include_in_menu
-  display_mode
   is_anchor
-  page_layout
-  breadcrumbs {
-    category_id
-    name
-    slug
-    path
-  }
 `
 
 export const categoryFragment = `
@@ -239,6 +208,10 @@ export const locationFragment = `
   country
   position
   miuz_id
+  lat
+  long
+  working_hours
+  services
   products {
     ${productFragment}
   }

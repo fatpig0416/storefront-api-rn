@@ -13,25 +13,12 @@ const categoriesField = `
     url_path
     position
     level
-    created_at
-    updated_at
     product_count
-    default_sort_by
     children {
         ${categoryFragment}
     }
     children_count
-    available_sort_by
-    include_in_menu
-    display_mode
     is_anchor
-    page_layout
-    breadcrumbs {
-        category_id
-        name
-        slug
-        path
-    }
 `
 
 export const filteredQuery = gql`

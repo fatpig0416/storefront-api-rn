@@ -356,7 +356,7 @@ export type SortField = {
 export type LocationInterface = {
   id: string
   name: string
-  name_converted: string
+  city_name_converted: string
   status: string
   city: string
   zip: string
@@ -364,6 +364,10 @@ export type LocationInterface = {
   country: string
   position: number
   miuz_id: string
+  lat: string
+  long: string
+  working_hours: string
+  services: [string]
   products: [ProductInterface]
 }
 
