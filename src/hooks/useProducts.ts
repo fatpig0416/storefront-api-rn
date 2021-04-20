@@ -36,7 +36,7 @@ const useProducts = (params: ProductsSearchParams = {}, customQuery?: CustomQuer
       setData(initialData)
       return
     }
-  
+
     setLoading(true)
     const context = useSFContext();
   

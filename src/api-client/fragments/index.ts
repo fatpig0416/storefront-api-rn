@@ -62,7 +62,6 @@ export const productChildrenFragment = `
 export const productFragment = `
   id
   type_id
-  visibility
   name
   sku
   description
@@ -81,46 +80,15 @@ export const productFragment = `
   special_price
   special_price_incl_tax
   special_price_tax
-  special_from_date
-  special_to_date
   weight
-  manufacturer
-  meta_title
-  meta_keyword
-  meta_description
   image
   small_image
   thumbnail
-  tier_price
-  tier_prices {
-    customer_group_id
-    qty
-    value
-    percentage_value
-    website_id
-  }
-  news_from_date
   size
   size_options
   color
   color_options
   category_ids
-  category {
-      category_id
-      name
-  }
-  stock {
-    item_id
-    product_id
-    stock_id
-    qty
-    is_in_stock
-    is_qty_decimal
-    min_qty
-    max_sale_qty
-    backorders
-    qty_increments
-  }
   is_in_stock
   keyword
   media_gallery {
@@ -139,7 +107,6 @@ export const productFragment = `
   collection_type
   stone_weight
   stone_type
-  stone_name_mapped
   stone_name
   main_stone
   article
