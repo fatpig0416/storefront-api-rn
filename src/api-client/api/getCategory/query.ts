@@ -44,7 +44,6 @@ export const listQuery = gql`
                 page_size
                 current_page
             }
-            aggregations
         }
     }
 `
