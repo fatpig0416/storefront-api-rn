@@ -1,8 +1,7 @@
 import ApolloClient, { ApolloQueryResult } from 'apollo-client'
 
-import { LocationList, LocationFilterInput, LocationsSearchParams } from './../../types/GraphQL'
 import { locationsQuery } from './query'
-import { Context } from './../../types'
+import { Context, LocationList, LocationFilterInput, LocationsSearchParams } from './../../../types'
 
 type Variables = {
   pageSize: number

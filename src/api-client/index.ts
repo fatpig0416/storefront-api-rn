@@ -1,7 +1,6 @@
 import * as api from './api'
 import { onSetup, useSFContext } from './helpers'
 import { apiClientFactory, handleErrors } from './helpers'
-export * from './types'
 
 const { createSFApiClient } = apiClientFactory<any, any>({
   onSetup,

@@ -1,7 +1,7 @@
 import ApolloClient, { ApolloQueryResult } from 'apollo-client'
 import { CategoryList, CategoryFilterInput, CategorySortInput, ProductFilterInput, ProductSortInput, CategorySearchParams } from './../../types/GraphQL'
 import { filteredQuery, listQuery } from './query'
-import { Context, CategoriesQueryType, CustomQuery } from './../../types'
+import { Context, CategoriesQueryType, CustomQuery } from './../../../types'
 
 type Variables = {
   pageSize: number

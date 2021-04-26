@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { handleErrors, useSFContext, ProductsQueryType, ProductDetailParams } from './../api-client'
+import { handleErrors, useSFContext } from './../api-client'
+import { ProductsQueryType, ProductDetailParams } from './../types'
 import { ProductInterface as Product, UseDatum } from './types'
 
 

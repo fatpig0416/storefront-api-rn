@@ -576,3 +576,37 @@ export type Distance = {
   distance: string
   locations: [LocationInterface]
 }
+
+export interface AgnosticPrice {
+
+  regular: number | null;
+
+  special?: number | null;
+
+}
+
+export interface AgnosticAttribute {
+
+  name?: string;
+
+  value: string | Record<string, any>;
+
+  label: string;
+
+}
+
+export interface AgnosticMediaGalleryItem {
+
+  image: string;
+
+  type: string;
+
+  url: string;
+
+  label: string;
+
+}
+
+export interface Gallery360Item {
+  uri: string
+}

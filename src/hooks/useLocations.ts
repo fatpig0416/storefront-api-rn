@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { handleErrors, useSFContext, LocationsSearchParams } from './../api-client'
+import { handleErrors, useSFContext } from './../api-client'
+import { LocationsSearchParams } from './../types'
 import { LocationsData, UseData } from './types'
 
 const initialData: LocationsData = {

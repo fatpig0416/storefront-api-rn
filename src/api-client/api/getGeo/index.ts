@@ -1,7 +1,6 @@
 import ApolloClient, { ApolloQueryResult } from 'apollo-client'
-import { Geo } from './../../types/GraphQL'
 import { geoQuery } from './query'
-import { Context } from './../../types'
+import { Context, Geo } from './../../../types'
 
 type Variables = {
   ip: string

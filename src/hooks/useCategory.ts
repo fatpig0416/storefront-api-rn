@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { handleErrors, useSFContext, CategoriesQueryType, CategoryProductParams } from './../api-client'
+import { handleErrors, useSFContext } from './../api-client'
+import { CategoriesQueryType, CategoryProductParams } from './../types'
 import { CategoryInterface as Category, UseDatum } from './types'
 
 const useCategory = (id: string | number, productParams?: CategoryProductParams): UseDatum<Category> => {

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { handleErrors, useSFContext, ProductsQueryType, ProductsSearchParams, CustomQuery } from './../api-client'
+import { handleErrors, useSFContext } from './../api-client'
+import { ProductsQueryType, ProductsSearchParams, CustomQuery } from './../types'
 import { ProductsData, UseData } from './types'
 
 const availableSortingOptions = [{

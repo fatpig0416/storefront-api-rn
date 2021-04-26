@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { handleErrors, useSFContext, CategoriesQueryType, CategorySearchParams, CustomQuery } from './../api-client'
+import { handleErrors, useSFContext } from './../api-client'
+import { CategoriesQueryType, CategorySearchParams, CustomQuery } from './../types'
 import { CategoriesData, UseData } from './types'
 
 const initialData: CategoriesData = {

@@ -6,7 +6,7 @@ import {
   Geo,
   Distance,
   LocationInterface
-} from './../api-client'
+} from './../types'
 
 type ProductsData = {
   items: [ProductInterface?];

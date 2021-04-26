@@ -1,7 +1,6 @@
 import ApolloClient, { ApolloQueryResult } from 'apollo-client'
-import { Distance } from './../../types/GraphQL'
 import { distanceQuery } from './query'
-import { Context } from './../../types'
+import { Context, Distance } from './../../../types'
 
 type Variables = {
   city: string
