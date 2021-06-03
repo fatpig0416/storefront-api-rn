@@ -109,18 +109,32 @@ export const getProductStones = (options: ConfigurableOption[], product: Product
 };
 
 
-export const getProductAttribute = (options: ConfigurableOption[], attribute_code: String, value_index: Number): any => {
-  const option = options.find((option) => {
-    return option.attribute_code === attribute_code
+export const getProductAttribute = (options: ConfigurableOption[], attribute_code: String, value_index: Number | String): any => {
+  if (!options) return { label: '' };
+
+  const option = options.find((_option) => {
+    return _option.attribute_code === attribute_code
   })
   
   if(!option || !option.values) 
-    return {label: ''};
+    return { label: '' };
   
   return option.values.find((value) => {
     return value.value_index == value_index
   });
 };
+
+
+export const getMiuzStoreId = (options: ConfigurableOption[], product: Product): string => {
+  if (!product.miuz_store_id) return ''
+
+  return getProductAttribute(
+    options,
+    'miuz_store_id',
+    product.miuz_store_id,
+  ).label
+}
+
 
 const productGetters: ProductGetters<Product, ProductVariantFilters> = {
   getPrice: getProductPrice,
@@ -129,6 +143,7 @@ const productGetters: ProductGetters<Product, ProductVariantFilters> = {
   getProductStones,
   getProductGallery360,
   getAttribute: getProductAttribute,
+  getMiuzStoreId,
 };
 
 export default productGetters;

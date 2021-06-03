@@ -37,6 +37,7 @@ export const productChildrenFragment = `
   miuz_id
   miuz_store_id
   miuz_sku
+  miuz_weight
   metal
   metal_color
   carat_weight
@@ -101,6 +102,7 @@ export const productFragment = `
   miuz_id
   miuz_store_id
   miuz_sku
+  miuz_weight
   metal
   metal_color
   carat_weight
